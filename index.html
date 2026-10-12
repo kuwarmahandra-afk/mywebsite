@@ -1,0 +1,972 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore the personal portfolio of Himanshu Shrestha, a student passionate about education, creativity, and technology.">
+  <title>Himanshu Shrestha | Student Portfolio</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #080c18;
+      --surface: #101729;
+      --surface2: #141e33;
+      --text: #f8fafc;
+      --muted: #a5b2c9;
+      --accent: #8b7cff;
+      --accent2: #40d9c3;
+      --border: rgba(255,255,255,.10);
+    }
+
+    body.light {
+      --bg: #f5f7ff;
+      --surface: #ffffff;
+      --surface2: #edf0ff;
+      --text: #182039;
+      --muted: #59647b;
+      --border: rgba(20,30,60,.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Poppins, sans-serif;
+      transition: background .3s, color .3s;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; }
+
+    .navbar {
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar-brand {
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: var(--text) !important;
+      font-size: 1.45rem;
+    }
+
+    .navbar-brand span, .gradient-text {
+      background: linear-gradient(100deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nav-link {
+      color: var(--muted) !important;
+      font-size: .9rem;
+      margin: 0 5px;
+    }
+
+    .nav-link:hover { color: var(--accent) !important; }
+
+    .navbar-toggler {
+      border-color: var(--border);
+      filter: invert(.8);
+    }
+
+    .theme-btn {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 125px 0 85px;
+      isolation: isolate;
+    }
+
+    .hero::before, .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(85px);
+      z-index: -1;
+      opacity: .17;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 320px;
+      height: 320px;
+      background: #7664ff;
+      top: 15%;
+      right: 4%;
+    }
+
+    .hero::after {
+      width: 230px;
+      height: 230px;
+      background: #21cfb6;
+      bottom: 5%;
+      left: -100px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 15px;
+      color: var(--accent2);
+      background: rgba(64,217,195,.08);
+      border: 1px solid rgba(64,217,195,.25);
+      border-radius: 50px;
+      font-size: .77rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+
+    .online-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent2);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6.5vw, 5.4rem);
+      font-weight: 800;
+      letter-spacing: -3px;
+      line-height: 1.12;
+      margin-bottom: 20px;
+    }
+
+    .hero h2 {
+      color: var(--muted);
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-weight: 400;
+      margin-bottom: 18px;
+    }
+
+    .hero p, .muted {
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    .hero p { max-width: 600px; }
+
+    .btn-main, .btn-ghost {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 23px;
+      border-radius: 10px;
+      font-size: .9rem;
+      font-weight: 600;
+      transition: .25s;
+    }
+
+    .btn-main {
+      background: linear-gradient(110deg, #8170ff, #6457df);
+      color: white;
+      border: 1px solid transparent;
+      box-shadow: 0 8px 30px #8170ff30;
+    }
+
+    .btn-main:hover {
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px #8170ff50;
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: var(--surface);
+    }
+
+    .btn-ghost:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .profile-wrap {
+      max-width: 350px;
+      margin: 30px auto;
+      position: relative;
+    }
+
+    .profile-card {
+      min-height: 340px;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      background: linear-gradient(145deg, var(--surface2), var(--surface));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 35px;
+      box-shadow: 0 30px 80px #00000020;
+    }
+
+    .avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 4.6rem;
+      color: #fff;
+      background: linear-gradient(140deg, #8b7cff, #40d9c3);
+      box-shadow: 0 0 0 10px rgba(139,124,255,.09);
+      margin-bottom: 28px;
+    }
+
+    .floating-tag {
+      position: absolute;
+      padding: 12px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      box-shadow: 0 12px 35px #00000020;
+      font-size: .83rem;
+      font-weight: 500;
+    }
+
+    .tag-one { top: 15%; right: -22px; }
+    .tag-two { bottom: 12%; left: -25px; }
+
+    section { padding: 90px 0; }
+
+    .section-kicker {
+      color: var(--accent2);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      margin-bottom: 17px;
+    }
+
+    .section-intro {
+      max-width: 650px;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    .surface-card {
+      height: 100%;
+      padding: 30px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      transition: transform .25s, border-color .25s;
+    }
+
+    .surface-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+    }
+
+    .icon-box {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      background: rgba(139,124,255,.12);
+      color: var(--accent);
+      font-size: 1.55rem;
+      border-radius: 14px;
+      margin-bottom: 22px;
+    }
+
+    .surface-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 13px;
+    }
+
+    .surface-card p {
+      color: var(--muted);
+      font-size: .91rem;
+      line-height: 1.85;
+      margin: 0;
+    }
+
+    .journey-item {
+      border-left: 2px solid var(--accent);
+      padding: 0 0 32px 25px;
+      position: relative;
+    }
+
+    .journey-item::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      background: var(--accent2);
+      border-radius: 50%;
+      position: absolute;
+      left: -7px;
+      top: 5px;
+    }
+
+    .journey-item:last-child { padding-bottom: 0; }
+
+    .journey-item h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .journey-item p {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: .9rem;
+    }
+
+    .skill-pill {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: 10px;
+      margin: 5px;
+      font-size: .86rem;
+    }
+
+    .skill-pill i { color: var(--accent2); }
+
+    .project-card {
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .project-cover {
+      min-height: 175px;
+      display: grid;
+      place-items: center;
+      font-size: 4rem;
+      color: white;
+      background: linear-gradient(135deg, #5747c9, #171d3d);
+    }
+
+    .project-cover.green {
+      background: linear-gradient(135deg, #168b84, #152d43);
+    }
+
+    .project-cover.orange {
+      background: linear-gradient(135deg, #d97736, #40203e);
+    }
+
+    .project-body { padding: 25px; }
+
+    .project-body h3 {
+      font-size: 1.08rem;
+      font-weight: 600;
+    }
+
+    .project-body p {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: .9rem;
+    }
+
+    .text-link {
+      color: var(--accent2);
+      font-size: .88rem;
+      font-weight: 600;
+    }
+
+    .cta-panel {
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: 65px 25px;
+      border: 1px solid var(--border);
+      border-radius: 25px;
+      background: linear-gradient(135deg, var(--surface2), var(--surface));
+    }
+
+    .cta-panel::before {
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: var(--accent);
+      opacity: .12;
+      filter: blur(65px);
+      border-radius: 50%;
+      left: 0;
+      top: 0;
+    }
+
+    .contact-form {
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .form-control {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 13px 15px;
+    }
+
+    .form-control:focus {
+      background: var(--surface);
+      color: var(--text);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px #8b7cff20;
+    }
+
+    .form-control::placeholder { color: var(--muted); }
+
+    .form-label { color: var(--muted); font-size: .9rem; }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    .social-link {
+      width: 42px;
+      height: 42px;
+      display: inline-grid;
+      place-items: center;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      margin: 0 4px;
+    }
+
+    .social-link:hover {
+      color: var(--accent2);
+      border-color: var(--accent2);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .7s, transform .7s;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #backTop {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 1000;
+      width: 45px;
+      height: 45px;
+      border: 0;
+      border-radius: 12px;
+      color: white;
+      background: var(--accent);
+      display: none;
+      box-shadow: 0 5px 20px #0002;
+    }
+
+    #backTop.show { display: block; }
+
+    @media (max-width: 991px) {
+      .navbar-collapse {
+        padding: 15px 0;
+      }
+
+      .tag-one { right: 0; }
+      .tag-two { left: 0; }
+    }
+
+    @media (max-width: 576px) {
+      .hero h1 { letter-spacing: -1.5px; }
+      .profile-card { min-height: 300px; }
+      .floating-tag { font-size: .75rem; }
+      section { padding: 65px 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#home">himanshu<span>.</span></a>
+
+    <div class="d-flex align-items-center gap-2 order-lg-2">
+      <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">
+        <i class="bi bi-sun" id="themeIcon"></i>
+      </button>
+
+      <button class="navbar-toggler" type="button"
+        data-bs-toggle="collapse" data-bs-target="#navMenu"
+        aria-controls="navMenu" aria-expanded="false" aria-label="Open menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse order-lg-1" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#journey">Journey</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Interests</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item ms-lg-2">
+          <a class="btn-main py-2 px-3" href="#contact">Let's Connect <i class="bi bi-arrow-up-right"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<header class="hero" id="home">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7">
+        <div class="eyebrow"><span class="online-dot"></span> STUDENT • LIFELONG LEARNER</div>
+
+        <h1>Hello, I'm<br><span class="gradient-text">Himanshu Shrestha.</span></h1>
+
+        <h2>Curious mind. Big dreams. Endless learning.</h2>
+
+        <p>
+          Welcome to my little corner of the internet! I am a student
+          here for educational purposes, discovering new ideas, exploring
+          technology, and building knowledge one day at a time.
+        </p>
+
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a href="#about" class="btn-main">Explore My Journey <i class="bi bi-arrow-right"></i></a>
+          <a href="#projects" class="btn-ghost">Discover My Interests <i class="bi bi-grid"></i></a>
+        </div>
+
+        <div class="mt-4 muted small">
+          <i class="bi bi-stars me-2" style="color:var(--accent2)"></i>
+          Learning something new is always a good idea.
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="profile-wrap">
+          <div class="profile-card">
+            <div class="avatar"><i class="bi bi-person-fill"></i></div>
+            <div class="section-kicker mb-2">Nice to meet you</div>
+            <h2 class="h4 fw-bold">Himanshu Shrestha</h2>
+            <p class="muted mb-3">Student & Future Creator</p>
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+              <span class="badge rounded-pill text-bg-primary">Education</span>
+              <span class="badge rounded-pill text-bg-success">Creativity</span>
+              <span class="badge rounded-pill text-bg-secondary">Technology</span>
+            </div>
+          </div>
+          <div class="floating-tag tag-one"><i class="bi bi-lightbulb me-2" style="color:var(--accent2)"></i>Stay Curious</div>
+          <div class="floating-tag tag-two"><i class="bi bi-book me-2" style="color:var(--accent)"></i>Keep Learning</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="reveal mb-5">
+      <div class="section-kicker">A little about me</div>
+      <h2 class="section-title">My story starts with <span class="gradient-text">curiosity.</span></h2>
+      <p class="section-intro">
+        I believe education is more than books and classrooms. It is
+        about asking questions, trying new things, learning from mistakes,
+        and becoming a better version of yourself.
+      </p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 reveal">
+        <article class="surface-card">
+          <div class="icon-box"><i class="bi bi-mortarboard"></i></div>
+          <h3>Education First</h3>
+          <p>I want to strengthen my knowledge, understand new concepts, and build a solid foundation for my future.</p>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal">
+        <article class="surface-card">
+          <div class="icon-box"><i class="bi bi-laptop"></i></div>
+          <h3>Exploring Technology</h3>
+          <p>Technology opens doors to creativity and problem-solving. I enjoy discovering what digital tools can do.</p>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal">
+        <article class="surface-card">
+          <div class="icon-box"><i class="bi bi-rocket-takeoff"></i></div>
+          <h3>Growing Every Day</h3>
+          <p>My goal is to develop useful skills, stay curious, and turn my ideas into meaningful projects over time.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey" style="background:var(--surface)">
+  <div class="container">
+    <div class="row g-5 align-items-start">
+      <div class="col-lg-5 reveal">
+        <div class="section-kicker">My path forward</div>
+        <h2 class="section-title">A journey of <span class="gradient-text">growth.</span></h2>
+        <p class="section-intro mb-4">
+          Every big achievement begins with small steps. I want to
+          keep learning, practise what I discover, and make progress
+          at my own pace.
+        </p>
+        <a href="#skills" class="btn-main">What I Want to Learn <i class="bi bi-arrow-down-right"></i></a>
+      </div>
+
+      <div class="col-lg-7 reveal">
+        <div class="journey-item">
+          <h3><i class="bi bi-book me-2" style="color:var(--accent)"></i>Build a Strong Foundation</h3>
+          <p>Focus on education, develop good study habits, and understand important concepts.</p>
+        </div>
+        <div class="journey-item">
+          <h3><i class="bi bi-code-slash me-2" style="color:var(--accent)"></i>Explore Digital Skills</h3>
+          <p>Discover coding, websites, applications, and the creative possibilities of technology.</p>
+        </div>
+        <div class="journey-item">
+          <h3><i class="bi bi-lightbulb me-2" style="color:var(--accent)"></i>Turn Ideas into Projects</h3>
+          <p>Practise by building small projects and learning from each new experience.</p>
+        </div>
+        <div class="journey-item">
+          <h3><i class="bi bi-globe me-2" style="color:var(--accent)"></i>Keep Looking Ahead</h3>
+          <p>Continue improving my skills and prepare for future educational and career opportunities.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERESTS AND SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="reveal mb-5">
+      <div class="section-kicker">What inspires me</div>
+      <h2 class="section-title">My interests & <span class="gradient-text">learning goals.</span></h2>
+      <p class="section-intro">Here are some areas I want to explore and improve through learning and practice.</p>
+    </div>
+
+    <div class="reveal d-flex flex-wrap">
+      <span class="skill-pill"><i class="bi bi-check-circle-fill"></i> Education</span>
+      <span class="skill-pill"><i class="bi bi-code-slash"></i> HTML & CSS</span>
+      <span class="skill-pill"><i class="bi bi-braces"></i> JavaScript</span>
+      <span class="skill-pill"><i class="bi bi-bootstrap"></i> Bootstrap 5</span>
+      <span class="skill-pill"><i class="bi bi-palette"></i> Web Design</span>
+      <span class="skill-pill"><i class="bi bi-cpu"></i> Artificial Intelligence</span>
+      <span class="skill-pill"><i class="bi bi-phone"></i> App Development</span>
+      <span class="skill-pill"><i class="bi bi-puzzle"></i> Problem Solving</span>
+      <span class="skill-pill"><i class="bi bi-camera"></i> Digital Creativity</span>
+    </div>
+
+    <p class="muted small mt-3 reveal">
+      These are learning interests, not a claim that I have mastered every skill.
+    </p>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background:var(--surface)">
+  <div class="container">
+    <div class="reveal mb-5">
+      <div class="section-kicker">Ideas into action</div>
+      <h2 class="section-title">Ideas I'd love to <span class="gradient-text">create.</span></h2>
+      <p class="section-intro">
+        These are example project ideas for my learning journey.
+        As I build real projects, I can replace these cards with my work.
+      </p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 reveal">
+        <article class="surface-card project-card">
+          <div class="project-cover"><i class="bi bi-window"></i></div>
+          <div class="project-body">
+            <div class="section-kicker">Project idea 01</div>
+            <h3>Personal Website</h3>
+            <p>A website to share my introduction, learning journey, goals, and future projects.</p>
+            <a class="text-link" href="#contact">Discuss this idea <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal">
+        <article class="surface-card project-card">
+          <div class="project-cover green"><i class="bi bi-journal-check"></i></div>
+          <div class="project-body">
+            <div class="section-kicker">Project idea 02</div>
+            <h3>Study Planner</h3>
+            <p>A simple planner concept to organise study tasks, set goals, and track learning activities.</p>
+            <a class="text-link" href="#contact">Explore the idea <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal">
+        <article class="surface-card project-card">
+          <div class="project-cover orange"><i class="bi bi-stars"></i></div>
+          <div class="project-body">
+            <div class="section-kicker">Project idea 03</div>
+            <h3>AI Creative Studio</h3>
+            <p>A learning project exploring how an interface for AI-powered creative tools could work.</p>
+            <a class="text-link" href="#contact">Explore the idea <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOTIVATION CTA -->
+<section id="goals">
+  <div class="container">
+    <div class="cta-panel reveal">
+      <div class="icon-box mx-auto"><i class="bi bi-stars"></i></div>
+      <div class="section-kicker">Small steps, big possibilities</div>
+      <h2 class="section-title">The future starts <span class="gradient-text">with learning.</span></h2>
+      <p class="section-intro mx-auto mb-4">
+        Every skill begins with a first attempt. I am ready to keep
+        learning, exploring new ideas, and making progress one step at a time.
+      </p>
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <a href="#journey" class="btn-main">Explore My Goals <i class="bi bi-arrow-right"></i></a>
+        <a href="#contact" class="btn-ghost">Say Hello <i class="bi bi-chat-dots"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--surface)">
+  <div class="container">
+    <div class="text-center reveal mb-5">
+      <div class="section-kicker">Get in touch</div>
+      <h2 class="section-title">Let's <span class="gradient-text">connect.</span></h2>
+      <p class="section-intro mx-auto">
+        Have a question, a learning resource to share, or an interesting
+        project idea? Write a message below.
+      </p>
+    </div>
+
+    <form class="contact-form reveal" id="contactForm">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label for="name" class="form-label">Your name</label>
+          <input class="form-control" id="name" name="name"
+            placeholder="Enter your name" required maxlength="80">
+        </div>
+
+        <div class="col-md-6">
+          <label for="email" class="form-label">Your email</label>
+          <input class="form-control" type="email" id="email" name="email"
+            placeholder="you@example.com" required maxlength="150">
+        </div>
+
+        <div class="col-12">
+          <label for="subject" class="form-label">Subject</label>
+          <input class="form-control" id="subject" name="subject"
+            placeholder="What would you like to discuss?" required maxlength="120">
+        </div>
+
+        <div class="col-12">
+          <label for="message" class="form-label">Message</label>
+          <textarea class="form-control" id="message" name="message"
+            rows="5" placeholder="Write your message here..." required maxlength="3000"></textarea>
+        </div>
+
+        <div class="col-12 text-center mt-4">
+          <button type="submit" class="btn-main">
+            Prepare My Message <i class="bi bi-send"></i>
+          </button>
+          <p class="muted small mt-3" id="formStatus" aria-live="polite">
+            This demo prepares an email in your email application. It does not send or store messages on a server.
+          </p>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="row align-items-center gy-3">
+      <div class="col-md-6 text-center text-md-start">
+        <a class="navbar-brand" href="#home">himanshu<span>.</span></a>
+        <p class="mb-0 mt-2">Learning today, building tomorrow.</p>
+      </div>
+
+      <div class="col-md-6 text-center text-md-end">
+        <a class="social-link" href="#home" aria-label="Home"><i class="bi bi-house"></i></a>
+        <a class="social-link" href="#about" aria-label="About"><i class="bi bi-person"></i></a>
+        <a class="social-link" href="#contact" aria-label="Contact"><i class="bi bi-envelope"></i></a>
+        <p class="mt-3 mb-0">© <span id="year"></span> Himanshu Shrestha. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="backTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // Current year
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Light and dark mode
+  const themeToggle = document.getElementById("themeToggle");
+  const themeIcon = document.getElementById("themeIcon");
+
+  function applyTheme(theme) {
+    document.body.classList.toggle("light", theme === "light");
+    themeIcon.className = theme === "light" ? "bi bi-moon-stars" : "bi bi-sun";
+    themeToggle.setAttribute(
+      "aria-label",
+      theme === "light" ? "Switch to dark mode" : "Switch to light mode"
+    );
+  }
+
+  let savedTheme = "dark";
+  try {
+    savedTheme = localStorage.getItem("himanshu-theme") || "dark";
+  } catch (error) {}
+
+  applyTheme(savedTheme);
+
+  themeToggle.addEventListener("click", () => {
+    const nextTheme = document.body.classList.contains("light") ? "dark" : "light";
+    applyTheme(nextTheme);
+    try {
+      localStorage.setItem("himanshu-theme", nextTheme);
+    } catch (error) {}
+  });
+
+  // Reveal animations
+  const revealItems = document.querySelectorAll(".reveal");
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach(item => observer.observe(item));
+  } else {
+    revealItems.forEach(item => item.classList.add("visible"));
+  }
+
+  // Back to top button
+  const backTop = document.getElementById("backTop");
+
+  window.addEventListener("scroll", () => {
+    backTop.classList.toggle("show", window.scrollY > 450);
+  });
+
+  backTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  // Close mobile menu after navigation
+  document.querySelectorAll("#navMenu .nav-link, #navMenu .btn-main").forEach(link => {
+    link.addEventListener("click", () => {
+      const menu = document.getElementById("navMenu");
+      if (menu.classList.contains("show")) {
+        bootstrap.Collapse.getOrCreateInstance(menu).hide();
+      }
+    });
+  });
+
+  // Contact form: prepare an email using the visitor's email application.
+  // Replace the placeholder with your own email address to activate it.
+  const ownerEmail = "";
+
+  document.getElementById("contactForm").addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (!ownerEmail || !ownerEmail.includes("@")) {
+      document.getElementById("formStatus").textContent =
+        "The form design is ready! Add your email address to the ownerEmail variable in the JavaScript to enable email drafts.";
+      return;
+    }
+
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const subject = encodeURIComponent(data.get("subject"));
+    const body = encodeURIComponent(
+      "From: " + data.get("name") + "\n" +
+      "Reply email: " + data.get("email") + "\n\n" +
+      data.get("message")
+    );
+
+    window.location.href =
+      "mailto:" + ownerEmail + "?subject=" + subject + "&body=" + body;
+
+    document.getElementById("formStatus").textContent =
+      "Your email application should open with a prepared draft. Review and send it there.";
+  });
+</script>
+
+</body>
+</html>
